@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>伪类和伪元素</title>
+  <style>
+    /** 伪类 
+    即添加到选择器的关键字,指定要选择元素的特殊状态
+    例如： :hover 表示鼠标悬停状态   
+          :first-child   :last-child     //首项和末尾项
+          :nth-child(odd)    //奇数项
+          :nth-child(even)   //偶数项
+          :nth-child(-n+7)   //快速选择从开始到第七个元素
+          :nth-child(n+7)    //从第七个开始选择
+    */
+    a:hover {
+      background-color: tomato;
+    }
+
+    /** 伪元素
+    即一个添加至选择器末尾的关键词,允许对被选择元素的特定部分修改样式,相当于创建了一个假标签
+    例如： 
+        ::before
+        ::after
+
+        注意：
+            1、content 为必写属性,不写会创建伪元素失败
+				    2、before和 after 创建的部分位置在原内容的前后
+					  3、伪元素默认为行内元素，如果要设置宽高，需要样式转换
+					  4、单标签没有伪元素 （img 、input)
+					  5、伪元素是被创建的标签的子元素，在定位是可以使用子绝父相
+
+        伪元素使用：
+          清除浮动：
+					.clearfix::afer{
+						content:"";
+						display:block;
+						height:0;
+						visibility:hidden;
+						clear:both;       //不允许左右两侧有浮动的元素
+						}
+    
+     */
+  </style>
+</head>
+
+<body>
+
+  <a href="#">伪类</a>
+</body>
+
+</html>
