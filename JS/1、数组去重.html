@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组去重</title>
+    <script>
+
+        let arr = [1, 2, 7, 1, 4, 2, 6, 7, 8, 3, 4, {}, {}, undefined, undefined, null, null, true, true];
+        // 需求： 去掉数组内重复的元素，行成一个新数组
+        /**
+         * 解决思路主要由两种：
+         * 1、利用语法自身键不可重用型
+         * 2、两层循环
+         *       
+        */
+
+
+        // 方法一：遍历数组 使用indexof方法判断  
+        // 补充：Array.indexOf('要查找的元素')，能够去数组中查询元素是否存在：存在返回对应的位置（下标），不存在返回 -1
+
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (newArr.indexOf(arr[i]) == -1) {
+                // newArr[newArr.length] = arr[i]
+                newArr.push(arr[i])
+            }
+        }
+        // console.log(newArr);  //(12) [1, 2, 7, 4, 6, 8, 3, {…}, {…}, undefined, null, true]
+
+
+
+        // 方法二：ES6 Set()方法去重
+        // 补充：最大特性：所有元素都是唯一的，没有重复，可以利用这一特性进行数组去重
+        function uniqe_Set(arr) {
+            return Array.from(new Set(arr))
+        }
+        // console.log(uniqe_Set(arr));  //(12) [1, 2, 7, 4, 6, 8, 3, {…}, {…}, undefined, null, true]
+
+
+
+        // 方法三：利用Map数据结构去重
+        // 补充：Map中不会出现相同的key值，遍历需要去重的数组，把数组的每一个元素作为key存到Map中,最终得到的是去重后的结果
+        /**
+         * 扩展：Map:
+         * 由来：js中的对象(Object)本质上是键值对的集合，但是只能使用字符串做键名，ES6提供的Map数据结构跟对象类似，但是各种类型的值都可以做键
+         * 使用：
+         *  1.创建Map     let m = new Map();
+         *  2、常用方法
+         *      2.1 set   添加或修改数据，并返回Map结构本身
+         *      2.2 get   获取数据，找不到key返回undefined
+         *      2.3 has   数据存在判断
+         **/
+        function uniqe_Map(arr) {
+            let map = new Map;
+            let newArr = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (map.has(arr[i])) {
+                    map.set(arr[i], true)
+                } else {
+                    map.set(arr[i], false);
+                    newArr.push(arr[i])
+                }
+            }
+            return newArr;
+        }
+        // console.log(uniqe_Map(arr)); //(12) [1, 2, 7, 4, 6, 8, 3, {…}, {…}, undefined, null, true]
+
+
+
+
+        // 方法四  Set简写
+        // console.log([...new Set(arr)]);  //(12) [1, 2, 7, 4, 6, 8, 3, {…}, {…}, undefined, null, true]
+
+
+
+        // 方法五  两层循环   两层循环，第一个和第二个是否相等，是的话使用splice方法删除第二个
+        function uniqe_cycles(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[i] == arr[j]) {
+                        arr.splice(j, 1)
+                        j--
+                    }
+                }
+            }
+            return arr;
+        }
+        console.log(uniqe_cycles(arr)); //(10) [1, 2, 7, 4, 6, 8, 3, {…}, {…}, undefined]
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
