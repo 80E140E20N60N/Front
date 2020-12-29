@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现一个同心圆</title>
+  <style>
+    /* 需求：实现一个同心圆 
+    分析：
+    方法一：box-shadow实现同心圆   一个div+CSS
+    方法二：伪元素加border
+    */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 方法一 */
+    .box {
+      margin: 200px;
+      width: 1px;
+      height: 1px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 10px #f80, 0 0 0 20px #8f0, 0 0 0 30px #ff0, 0 0 0 40px #08f, 0 0 0 50px #01f;
+    }
+
+    /* 方法二 */
+    .box2 {
+      margin: 200px;
+      width: 100px;
+      height: 100px;
+      background-color: tomato;
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 0 0 20px #8f0, 0 0 0 30px #ff0, 0 0 0 40px #08f, 0 0 0 50px #01f;
+    }
+
+    .box2::before {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: hotpink;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+
+  <div class="box2"></div>
+
+</body>
+
+</html>
