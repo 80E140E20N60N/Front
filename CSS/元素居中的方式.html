@@ -16,18 +16,35 @@
       height: 280px;
       background-color: tomato;
       margin: 0 auto;
-      /* 弹性布局实现居中 */
-      display: flex;
+      /* 法1：弹性布局实现居中 */
+      /* display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: center; */
+
+      /* 法2：子绝父相,margin值auto
+         法3：子绝父相和transfrom平移
+      */
+      position: relative;
     }
 
     .box1 {
       width: 100px;
       height: 100px;
-      /* 平移实现 */
-      /* transform: translate(150px, 90px); */
       background-color: blue;
+
+      /* 法2：子绝父相,margin值auto*/
+      /* position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto; */
+
+      /*  法3：子绝父相和transfrom平移 */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     p {
@@ -48,19 +65,28 @@
       margin: 0 auto;
     
     二：垂直居中
-
       1、文本元素居中 
         高度等于行高
 
-      2、盒子居中
-        方法1：子元素盒子可以使用平移实现居中：
-        transform: translate(父宽度一半 - 子宽度一半, 父高度一半 - 子高度一半);
+      2、盒子居中       
+        方法1：子绝父相，margin值auto
+           position: absolute;
+           top: 0;
+           right: 0;
+           bottom: 0;
+           left: 0;
+           margin: auto;
 
-        方法2：父元素使用弹性布局
+        方法2：父元素使用弹性布局    注意兼容性问题
           display: flex;
           justify-content: center;
           align-items: center;
-
+        
+        方法3：子绝父相和transfrom平移
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
   -->
 
   <div class="box">
