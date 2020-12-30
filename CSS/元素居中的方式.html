@@ -16,12 +16,17 @@
       height: 280px;
       background-color: tomato;
       margin: 0 auto;
+      /* 弹性布局实现居中 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .box1 {
       width: 100px;
       height: 100px;
-      transform: translate(150px, 90px);
+      /* 平移实现 */
+      /* transform: translate(150px, 90px); */
       background-color: blue;
     }
 
@@ -38,16 +43,24 @@
 
     一：水平居中
       1、文本元素居中 
-        tac
+      text-align: center;
       2、盒子居中
       margin: 0 auto;
     
     二：垂直居中
+
       1、文本元素居中 
         高度等于行高
+
       2、盒子居中
-        子元素盒子可以使用平移：
+        方法1：子元素盒子可以使用平移实现居中：
         transform: translate(父宽度一半 - 子宽度一半, 父高度一半 - 子高度一半);
+
+        方法2：父元素使用弹性布局
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
   -->
 
   <div class="box">
@@ -55,6 +68,7 @@
       <p>文本</p>
     </div>
   </div>
+
 </body>
 
 </html>
