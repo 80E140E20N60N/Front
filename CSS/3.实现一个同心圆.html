@@ -10,6 +10,20 @@
     分析：
     方法一：box-shadow实现同心圆   一个div+CSS
     方法二：伪元素加border
+
+    <!-- 实现必备： -->
+    1.设置盒子阴影  box-shadow可以加多个
+      box-shadow：水平偏移值  垂直偏移值  模糊程度  阴影尺寸 阴影颜色 内外阴影设置
+                    必须       必须     越大越模糊      
+       
+    2.定位实现同心居中效果
+      2.1 伪元素是被创建的标签的子元素，在定位是可以使用子绝父相
+
+      2.2 绝对定位以祖先元素定位
+          祖先元素有定位，以最近一级带有定位的父级元素为准，如果父级元素没有定位或没有父级元素，则以浏览器为准。
+      2.3 transform:translate(x,y)    transform属性实现平移
+        2.3.1  x、y分别表示水平、垂直偏移值 
+        2.3.2  translate 平移的百分比是相对于自身
     */
     * {
       margin: 0;
@@ -43,6 +57,7 @@
       height: 40px;
       background-color: hotpink;
       border-radius: 50%;
+      /* translate平移配合子绝父相实现居中效果 */
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -54,6 +69,7 @@
   <div class="box"></div>
 
   <div class="box2"></div>
+
 
 </body>
 
