@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>元素居中的方式</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 400px;
+      height: 280px;
+      background-color: tomato;
+      margin: 0 auto;
+    }
+
+    .box1 {
+      width: 100px;
+      height: 100px;
+      transform: translate(150px, 90px);
+      background-color: blue;
+    }
+
+    p {
+      text-align: center;
+      height: 100px;
+      line-height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 元素居中的方式
+
+    一：水平居中
+      1、文本元素居中 
+        tac
+      2、盒子居中
+      margin: 0 auto;
+    
+    二：垂直居中
+      1、文本元素居中 
+        高度等于行高
+      2、盒子居中
+        子元素盒子可以使用平移：
+        transform: translate(父宽度一半 - 子宽度一半, 父高度一半 - 子高度一半);
+  -->
+
+  <div class="box">
+    <div class="box1">
+      <p>文本</p>
+    </div>
+  </div>
+</body>
+
+</html>
