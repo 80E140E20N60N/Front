@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组类型的判断</title>
+</head>
+
+<body>
+  <script>
+    /**方法一：instance of方法   
+     *  用来判断某个变量是否是某个对象的实例,利用该特性，可以用来判断是否是数组
+     * 
+     *  let arr = new Array(1,2,3)
+     *  console.log(arr instanceof Array);    //true
+     * 同时：
+     *  console.log(arr instanceof Object);   //true  因为Array是Object的子类
+     * 
+     * 拓展：
+     * typeof用法
+     *  用以获取一个变量或表达式的类型，返回结果如下：
+     *    Number
+     *    Boolean
+     *    String
+     *    function(函数)
+     *    Object(包括：NULL,数组,对象)
+     *    underfined
+     * 
+    **/
+    function isArr(arr) {
+      // 方法一：instanceof方法
+      // let res = arr instanceof Array
+
+      // 方法二：构造函数方法(constructor)
+      // let res = arr.constructor == Array ? '数组' : '非数组';
+
+      // 方法三：isArray()方法
+      let res = Array.isArray(arr)
+      console.log(res);
+    }
+
+    let arr = [1, 2, 3]
+
+    let obj = {
+      name: 'hhh'
+    }
+    isArr(arr);   //true
+    isArr(obj);   //false
+
+
+
+  </script>
+</body>
+
+</html>
